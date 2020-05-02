@@ -51,7 +51,7 @@ if ev.simu  % for simulated data, true clustering and parameters are known. Vali
     [AR,RI,MI,HI] = RandIndex(out.pa_true.labs, labsCentral);
     % disp( [AR,RI,MI,HI] )  %adjust rand, rand, disagreement, agreement
     fit.cl = [AR,RI,MI,HI];
-    eval = evalclusters(out.pa_true.data', 'kmeans', 'silhouette', 'klist', 1:10);
+    eval = evalclusters(out.pa_true.data', 'kmeans', 'gap', 'klist', 1:10);  %silhouette
     rng('default');  rng(8);
     [labsKmeans, ctrs] = kmeans(out.pa_true.data',  eval.OptimalK); %Kmeans on original data domain
     [AR,RI,MI,HI] = RandIndex(out.pa_true.labs, labsKmeans');
